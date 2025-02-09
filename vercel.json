@@ -6,7 +6,8 @@
         "use": "@vercel/static-build",
         "config": {
           "installCommand": "npm install --force",
-          "buildCommand": "npx prisma generate && npx prisma migrate deploy && rimraf dist && tsc"
+          "buildCommand": "npm run build",
+          "ignoreBuildCache": true
         }
       },
       {
