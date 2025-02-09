@@ -1,16 +1,25 @@
 {
     "version": 2,
     "builds": [
-        {
-            "src": "dist/index.js",
-            "use": "@vercel/node",
-            "config": { "includeFiles": ["dist/**"] }
+      {
+        "src": "package.json",
+        "use": "@vercel/static-build",
+        "config": {
+          "installCommand": "npm install --force",
+          "buildCommand": "npx prisma generate && npx prisma migrate deploy && rimraf dist && tsc"
         }
+      },
+      {
+        "src": "dist/index.js",
+        "use": "@vercel/node",
+        "config": { "includeFiles": ["dist/**"] }
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "dist/index.js"
-        }
+      {
+        "src": "/(.*)",
+        "dest": "dist/index.js"
+      }
     ]
-}
+  }
+  

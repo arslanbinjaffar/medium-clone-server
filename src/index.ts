@@ -36,6 +36,9 @@ app.use(requestLogger)
 
 // Main Routes
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
 
 app.use('/api/auth', authRouter);
 app.use('/api/blog', blogRouter);
