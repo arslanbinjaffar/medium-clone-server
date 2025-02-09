@@ -8,10 +8,14 @@
   },
   "scripts": {
     "seed": "npx prisma db seed",
-    "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": " ts-node-dev src/index.ts | pino-pretty",
-    "prisma:dev": "npx prisma generate && npx prisma migrate dev  --create-only"
+    "prisma:dev": "npx prisma generate && npx prisma migrate dev  --create-only",
+    "build": "rimraf dist && tsc",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist",
+  "test": "echo \"Error: no test specified\" && exit 1"
+  
   },
   "keywords": [],
   "author": "",
